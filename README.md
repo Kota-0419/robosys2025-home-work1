@@ -23,10 +23,14 @@ chmod +x main.py
 ```
 ### 2.実行例
 * 手入力で試す場合
+```bash
 echo "Current time: 1732950000" | ./main.py
+```
 
 * ログファイルを読み込む場合（実践的な使い方）
+```bash
 cat robot_data.log | ./main.py
+```
 
 　出力結果:Current time: 2024-11-30 16:00:00
 
