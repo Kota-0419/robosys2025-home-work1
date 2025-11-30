@@ -15,7 +15,7 @@ def main():
             dt = datetime.fromtimestamp(ts)
             time_str = str(dt)
 
-            time_str = str(dt)
+            new_line = line.replace(ts_str, time_str)
 
             sys.stdout.write(new_line)
         else:
