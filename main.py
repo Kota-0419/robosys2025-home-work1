@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
-
 import sys
+import re
 
-for line in sys.stdin:
-    line = line.strip()
+def main():
+    pattern = re.compile(r'\d{10}')
 
-    if not line:
-        continue
+    for line in sys.stdin:
+        match = pattern.search(line)
 
-    try:
-        value = float(line)
+        if match:
+            print(f"Found: {match.group()}")
 
-        result = value * 2
-
-        print(result)
-
-    except ValueError:
-
-        pass
+if __name__ == "__main__":
+    main()
