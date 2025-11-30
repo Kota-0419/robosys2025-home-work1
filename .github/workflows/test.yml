@@ -5,16 +5,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # (1) ここで何をしている？
       - uses: actions/checkout@v4
       
-      # (2) ここで何をしている？
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ["3.7", "3.8", "3.9", "3.10"]
           
-      # (3) ここの run の中身は何を意味している？
       - name: Run test
         run: |
           echo "1750000000" | python main.py > output.txt
