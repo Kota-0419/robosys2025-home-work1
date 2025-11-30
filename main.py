@@ -13,7 +13,13 @@ def main():
             ts_str = match.group()
             ts = float(ts_str)
             dt = datetime.fromtimestamp(ts)
-            print(dt)
+            time_str = str(dt)
+
+            time_str = str(dt)
+
+            sys.stdout.write(new_line)
+        else:
+            sys.stdout.write(line)
 
 if __name__ == "__main__":
     main()
