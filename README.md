@@ -36,7 +36,7 @@ cat robot_data.log | ./main.py
 
 
 ```bash
-git clone [https://github.com/Kota-0419/robosys2025-home-work1.git](https://github.com/Kota-0419/robosys2025-home-work1.git)
+git clone https://github.com/Kota-0419/robosys2025-home-work1.git
 cd robosys2025-home-work1
 ```
 
