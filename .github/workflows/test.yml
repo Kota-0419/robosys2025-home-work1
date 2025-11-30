@@ -1,9 +1,21 @@
 name: test
 on: push
-jobs: 
+
+jobs:
   test:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: All test
-      run: bash -xv ./test.bash
+      # (1) ここで何をしている？
+      - uses: actions/checkout@v4
+      
+      # (2) ここで何をしている？
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      # (3) ここの run の中身は何を意味している？
+      - name: Run test
+        run: |
+          echo "1750000000" | python main.py > output.txt
+          grep "2024" output.txt
