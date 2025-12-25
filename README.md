@@ -19,17 +19,17 @@
 実行権限を与えてから、パイプを使ってデータを流し込みます。
 ### 1.実行権限の付与
 ```bash
-chmod +x main.py
+chmod +x clock
 ```
 ### 2.実行例
 * 手入力で試す場合
 ```bash
-echo "Current time: 1732950000" | ./main.py
+echo "Current time: 1732950000" | ./clock
 ```
 
 * ログファイルを読み込む場合（実践的な使い方）
 ```bash
-cat robot_data.log | ./main.py
+cat robot_data.log | ./clock
 ```
 
 　出力結果:Current time: 2024-11-30 16:00:00
