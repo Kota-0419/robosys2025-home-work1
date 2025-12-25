@@ -2,32 +2,24 @@
 # SPDX-FileCopyrightText: 2025 Kota Matsura <s24c1110qm@s.chibakoudai.jp>
 # SPDX-License-Identifier: BSD-3-Clause
 
-ng () {
-      echo ${1}行目が違うよ
-      res=1
-}
+set -e
 
-res=0
+tmp=/tmp/$$
 
-out=$(seq 5 | ./clock)
-[ "${out}" = 15 ] || ng ${LINENO}
+trap 'rm -f $tmp' EXIT
 
-out=$(echo "10 20 30" | tr ' ' '\n' | ./clock)
-[ "${out}" = 60 ] || ng ${LINENO}
+echo "Test 1: Unix timestamp conversion"
 
-out=$(echo a | ./clock > /dev/null 2>&1)
-if [ "$?" = 1 ]; then
-      echo "Error handling OK (non-number input)"
+echo "Current: 1732950000" | ./main.py > $tmp
+
+if grep -q "2024-11-30 16:00:00" $tmp; then
+    echo "OK"
 else
-      ng ${LINENO}
+    echo "NG"
+    echo "Input: 1732950000"
+    echo "Output:"
+    cat $tmp
+    exit 1
 fi
 
-out=$(echo | ./clock > /dev/null 2>&1)
-if [ "$?" = 1 ]; then
-      echo "Error handling OK (empty input)"
-else
-      ng ${LINENO}
-fi
-
-[ "${res}" = 0 ] && echo OK
-exit $res
+exit 0
