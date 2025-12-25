@@ -9,20 +9,20 @@ ng () {
 
 res=0
 
-out=$(seq 5 | ./main)
+out=$(seq 5 | ./clock)
 [ "${out}" = 15 ] || ng ${LINENO}
 
-out=$(echo "10 20 30" | tr ' ' '\n' | ./main)
+out=$(echo "10 20 30" | tr ' ' '\n' | ./clock)
 [ "${out}" = 60 ] || ng ${LINENO}
 
-out=$(echo a | ./main > /dev/null 2>&1)
+out=$(echo a | ./clock > /dev/null 2>&1)
 if [ "$?" = 1 ]; then
       echo "Error handling OK (non-number input)"
 else
       ng ${LINENO}
 fi
 
-out=$(echo | ./main > /dev/null 2>&1)
+out=$(echo | ./clock > /dev/null 2>&1)
 if [ "$?" = 1 ]; then
       echo "Error handling OK (empty input)"
 else
