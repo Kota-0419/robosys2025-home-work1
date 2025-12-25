@@ -10,7 +10,7 @@ trap 'rm -f $tmp' EXIT
 
 echo "Test 1: Unix timestamp conversion"
 
-echo "Current: 1732950000" | ./main.py > $tmp
+echo "Current: 1732950000" | ./clock > $tmp
 
 if grep -q "2024-11-30 16:00:00" $tmp; then
     echo "OK"
