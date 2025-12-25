@@ -1,25 +1,33 @@
-#!/bin/bash
-# SPDX-FileCopyrightText: 2025 Kota Matsura
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Kota Matsura <s24c1110qm@s.chibakoudai.jp>
 # SPDX-License-Identifier: BSD-3-Clause
 
-set -e
+ng () {
+      echo ${1}行目が違うよ
+      res=1
+}
 
-tmp=/tmp/$$
+res=0
 
-trap 'rm -f $tmp' EXIT
+out=$(seq 5 | ./main)
+[ "${out}" = 15 ] || ng ${LINENO}
 
-echo "Test 1: Unix timestamp conversion"
+out=$(echo "10 20 30" | tr ' ' '\n' | ./main)
+[ "${out}" = 60 ] || ng ${LINENO}
 
-echo "Current: 1732950000" | ./main.py > $tmp
-
-if grep -q "2024-11-30 16:00:00" $tmp; then
-    echo "OK"
+out=$(echo a | ./main > /dev/null 2>&1)
+if [ "$?" = 1 ]; then
+      echo "Error handling OK (non-number input)"
 else
-    echo "NG"
-    echo "Input: 1732950000"
-    echo "Output:"
-    cat $tmp
-    exit 1
+      ng ${LINENO}
 fi
 
-exit 0
+out=$(echo | ./main > /dev/null 2>&1)
+if [ "$?" = 1 ]; then
+      echo "Error handling OK (empty input)"
+else
+      ng ${LINENO}
+fi
+
+[ "${res}" = 0 ] && echo OK
+exit $res
