@@ -39,22 +39,22 @@ $ echo "1783350000" | ./clock
 ```
 例3:
 ```bash
-$ echo "1793372400" | ./clock
-2026-10-31 00:00:00
+$ echo "渋ハロ:1793372400" | ./clock
+渋ハロ:2026-10-31 00:00:00
 ```
 例4:
 ```bash
-$ echo "1798124400" | ./clock
-2026-12-25 00:00:00
+$ echo "聖なる夜:1798124400" | ./clock
+聖なる夜:2026-12-25 00:00:00
 ```
 例5:
 ```bash
-$ echo "1798729200" | ./clock
-2027-01-01 00:00:00
+$ echo "次の元旦:1798729200" | ./clock
+次の元旦:2027-01-01 00:00:00
 ```
 ### 2.ログファイルを読み込む場合（実践的な使い方）
 
-テスト用ログファイル(test_log.txt)
+テスト用ログファイル( test_log.txt )
 ```bash
 [INFO] System boot sequence started at 1735689600
 [WARN] Module 'sensor_a' initialization delay.
