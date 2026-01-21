@@ -18,7 +18,6 @@
 ```bash
 $ git clone https://github.com/Kota-0419/robosys2025-home-work1.git
 $ cd robosys2025-home-work1
-$ chmod +x clock
 ```
 
 ## 使い方
