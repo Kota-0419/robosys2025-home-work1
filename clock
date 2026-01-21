@@ -1,36 +1,22 @@
-#!/usr/bin/python6
-# SPDX-FileCopyrightText: 2025 <Matsura Kota>
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Kota Matsura <s24c1110qm@s.chibakoudai.jp>
 # SPDX-License-Identifier: BSD-3-Clause
-
 import sys
 import re
 from datetime import datetime
-
-def unix_to_datetime(timestamp_str):
-    try:
-        timestamp = float(timestamp_str)
-
-        dt = datetime.fromtimestamp(timestamp)
-
-        return str(dt)
-
-    except ValueError:
-        return timestamp_str
 
 def main():
     pattern = re.compile(r'\b(1[6-7]\d{8})(\.\d+)?\b')
 
     for line in sys.stdin:
         match = pattern.search(line)
-
         if match:
-            timestamp_str = match.group()
-git pull
-            readable_time = unix_to_datetime(timestamp_str)
-
-            new_line = line.replace(timestamp_str, readable_time)
-
- 	        sys.stdout.write(new_line)
+            ts_str = match.group()
+            ts = float(ts_str)
+            dt = datetime.fromtimestamp(ts)
+            time_str = str(dt)
+            new_line = line.replace(ts_str, time_str)
+            sys.stdout.write(new_line)
         else:
             sys.stdout.write(line)
 

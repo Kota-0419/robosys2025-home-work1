@@ -1,7 +1,6 @@
-#!/usr/bin/python3
-# SPDX-FileCopyrightText: 2025 Kota Matsura <s24c1110qm@s.chibakoudai.jp>
+#!/bin/bash
+# SPDX-FileCopyrightText: 2025 Kota Matsura
 # SPDX-License-Identifier: BSD-3-Clause
-
 
 ng () {
       echo ${1}行目が違うよ
@@ -15,12 +14,9 @@ out=$(echo "Current time: 1732950000" | ./clock)
 
 out=$(echo "1798124400" | ./clock)
 [ "${out}" = "2026-12-25 00:00:00" ] || ng "$LINENO"
-=======
-echo "Current: 1732950000" | ./clock > $tmp
 
 out=$(echo "Date: 1770994800 (Valentine)" | ./clock)
 [ "${out}" = "Date: 2026-02-14 00:00:00 (Valentine)" ] || ng "$LINENO"
-
 
 out=$(echo "No timestamp here" | ./clock)
 [ "${out}" = "No timestamp here" ] || ng "$LINENO"
@@ -28,7 +24,6 @@ out=$(echo "No timestamp here" | ./clock)
 out=$(echo "" | ./clock)
 [ "$?" = 0 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
-
 
 [ "$res" = 0 ] && echo OK
 exit $res
