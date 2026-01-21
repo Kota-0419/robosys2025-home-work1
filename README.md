@@ -16,9 +16,9 @@
 ## 準備
 以下のコマンドを順番に実行してください。リポジトリを取り込み、作業用ディレクトリへ移動します。
 ```bash
-git clone https://github.com/Kota-0419/robosys2025-home-work1.git
-cd robosys2025-home-work1
-chmod +x clock
+$ git clone https://github.com/Kota-0419/robosys2025-home-work1.git
+$ cd robosys2025-home-work1
+$ chmod +x clock
 ```
 
 ## 使い方
@@ -51,8 +51,8 @@ $ echo "1798124400" | ./clock
 $ echo "1798729200" | ./clock
 2027-01-01 00:00:00
 ```
-例6:
-* ログファイルを読み込む場合（実践的な使い方）
+例6:ログファイルを読み込む場合（実践的な使い方）
+
 テスト用ログファイル(test_log.txt)
 ```bash
 [INFO] System boot sequence started at 1735689600
@@ -66,6 +66,7 @@ Check point A reached: 1783350000 (Tanabata)
 実行結果:
 ```bash
 $ cat test_log.txt | ./clock
+
 [INFO] System boot sequence started at 2025-01-01 09:00:00
 [WARN] Module 'sensor_a' initialization delay.
 [DEBUG] timestamp: 2026-02-14 00:00:00 is set for Valentine event trigger.
