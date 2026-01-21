@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python6
 # SPDX-FileCopyrightText: 2025 <Matsura Kota>
 # SPDX-License-Identifier: BSD-3-Clause
 
@@ -25,12 +25,12 @@ def main():
 
         if match:
             timestamp_str = match.group()
-
+git pull
             readable_time = unix_to_datetime(timestamp_str)
 
             new_line = line.replace(timestamp_str, readable_time)
 
-            sys.stdout.write(new_line)
+ 	        sys.stdout.write(new_line)
         else:
             sys.stdout.write(line)
 

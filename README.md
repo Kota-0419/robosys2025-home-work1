@@ -13,8 +13,34 @@
 * Ubuntu 20.04 / 22.04 (動作確認済み)
 * Ubuntu 24.04 (GitHub Actions)
 
+<<<<<<< HEAD
 ## 準備
 以下のコマンドを順番に実行してください。リポジトリを取り込み、作業用ディレクトリへ移動します。
+=======
+## インストール方法
+リポジトリをクローンし、ディレクトリに移動します。
+
+## 使い方
+実行権限を与えてから、パイプを使ってデータを流し込みます。
+### 1.実行権限の付与
+```bash
+chmod +x clock
+```
+### 2.実行例
+* 手入力で試す場合
+```bash
+echo "Current time: 1732950000" | ./clock
+```
+
+* ログファイルを読み込む場合（実践的な使い方）
+```bash
+cat robot_data.log | ./clock
+```
+
+　出力結果:Current time: 2024-11-30 16:00:00
+
+
+>>>>>>> ae2d5407175140d1382726bb5d72f4f2392886df
 ```bash
 git clone https://github.com/Kota-0419/robosys2025-home-work1.git
 cd robosys2025-home-work1
