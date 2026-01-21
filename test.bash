@@ -2,24 +2,31 @@
 # SPDX-FileCopyrightText: 2025 Kota Matsura
 # SPDX-License-Identifier: BSD-3-Clause
 
-set -e
 
-tmp=/tmp/$$
+ng () {
+      echo ${1}行目が違うよ
+      res=1
+}
 
-trap 'rm -f $tmp' EXIT
+res=0
 
-echo "Test 1: Unix timestamp conversion"
+out=$(echo "Current time: 1732950000" | ./clock)
+[ "${out}" = "Current time: 2024-11-30 16:00:00" ] || ng "$LINENO"
 
-echo "Current: 1732950000" | ./main.py > $tmp
+out=$(echo "1798124400" | ./clock)
+[ "${out}" = "2026-12-25 00:00:00" ] || ng "$LINENO"
 
-if grep -q "2024-11-30 16:00:00" $tmp; then
-    echo "OK"
-else
-    echo "NG"
-    echo "Input: 1732950000"
-    echo "Output:"
-    cat $tmp
-    exit 1
-fi
+out=$(echo "Date: 1770994800 (Valentine)" | ./clock)
+[ "${out}" = "Date: 2026-02-14 00:00:00 (Valentine)" ] || ng "$LINENO"
 
-exit 0
+
+out=$(echo "No timestamp here" | ./clock)
+[ "${out}" = "No timestamp here" ] || ng "$LINENO"
+
+out=$(echo "" | ./clock)
+[ "$?" = 0 ]      || ng "$LINENO"
+[ "${out}" = "" ] || ng "$LINENO"
+
+
+[ "$res" = 0 ] && echo OK
+exit $res
